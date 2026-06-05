@@ -1,0 +1,10 @@
+stages:
+  data_collection:
+    cmd: python src/data/data_collection.py
+    deps:
+    - data/external/loan_data.csv
+    - params.yaml
+    - src/data/data_collection.py
+    outs:
+    - data/raw/test.csv
+    - data/raw/train.csv
