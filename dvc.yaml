@@ -8,3 +8,12 @@ stages:
     outs:
     - data/raw/test.csv
     - data/raw/train.csv
+  data_prep:
+    cmd: python src/data/data_prep.py
+    deps:
+    - data/raw/test.csv
+    - data/raw/train.csv
+    - src/data/data_prep.py
+    outs:
+    - data/processed/test_processed.csv
+    - data/processed/train_processed.csv
