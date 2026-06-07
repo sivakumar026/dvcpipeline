@@ -1,0 +1,86 @@
+schema: '2.0'
+stages:
+  data_collection:
+    cmd: python src/data/data_collection.py
+    deps:
+    - path: data/external/loan_data.csv
+      hash: md5
+      md5: 944386d30ab3fc923d0abe3e578be7a4
+      size: 26276
+    - path: params.yaml
+      hash: md5
+      md5: eba2b9e03528a99fc8156a307c48047f
+      size: 202
+    - path: src/data/data_collection.py
+      hash: md5
+      md5: 8e6ded7ff8fddee171128cdb7a7d4ab2
+      size: 1873
+    outs:
+    - path: data/raw/test.csv
+      hash: md5
+      md5: 55d2e2c21a49cf5e3081f35049accd0e
+      size: 8162
+    - path: data/raw/train.csv
+      hash: md5
+      md5: 54a6eac51ab9df5edbd88bec33b1c552
+      size: 18658
+  data_prep:
+    cmd: python src/data/data_prep.py
+    deps:
+    - path: data/raw/test.csv
+      hash: md5
+      md5: 55d2e2c21a49cf5e3081f35049accd0e
+      size: 8162
+    - path: data/raw/train.csv
+      hash: md5
+      md5: 54a6eac51ab9df5edbd88bec33b1c552
+      size: 18658
+    - path: src/data/data_prep.py
+      hash: md5
+      md5: 43cbf221aeb2e6d008ca78259c4c4039
+      size: 2508
+    outs:
+    - path: data/processed/test_processed.csv
+      hash: md5
+      md5: 50dc30481a29d2e0cf084e85ff411e95
+      size: 5048
+    - path: data/processed/train_processed.csv
+      hash: md5
+      md5: fb5ce28e25208b500f72ef2f25265622
+      size: 11531
+  model_building:
+    cmd: python src/models/model_build.py
+    deps:
+    - path: data/processed/train_processed.csv
+      hash: md5
+      md5: fb5ce28e25208b500f72ef2f25265622
+      size: 11531
+    - path: src/models/model_build.py
+      hash: md5
+      md5: 83ec984d9a2c8890d940a53cc890c8ad
+      size: 2797
+    outs:
+    - path: models/model.pkl
+      hash: md5
+      md5: a834d27a5ba309ab1c9c3e51dae36fd7
+      size: 659129
+  model_evaluation:
+    cmd: python src/models/model_eval.py
+    deps:
+    - path: data/processed/test_processed.csv
+      hash: md5
+      md5: 50dc30481a29d2e0cf084e85ff411e95
+      size: 5048
+    - path: models/model.pkl
+      hash: md5
+      md5: a834d27a5ba309ab1c9c3e51dae36fd7
+      size: 659129
+    - path: src/models/model_eval.py
+      hash: md5
+      md5: 6c20e5e6d57aa2ac2c77ca7467ff60b6
+      size: 896
+    outs:
+    - path: reports/metrics.json
+      hash: md5
+      md5: e58d49679b76a3dc665776d45086768f
+      size: 124

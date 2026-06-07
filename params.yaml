@@ -1,0 +1,11 @@
+data_collection:
+  test_size_param: 0.3
+  random_state_param: 42
+
+data_preprocessing:
+  fill_strategy: mean
+
+model_building:
+  test_size_param: 0.2
+  random_state_param: 42
+  n_estimators: 100
