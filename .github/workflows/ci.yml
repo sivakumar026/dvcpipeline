@@ -39,6 +39,7 @@ jobs:
         env:
           DAGSHUB_TOKEN: ${{ secrets.DAGSHUB_TOKEN }}
         run: |
+          echo "DAGSHUB_USER_TOKEN=$DAGSHUB_TOKEN" >> $GITHUB_ENV
           echo "MLFLOW_TRACKING_URI=https://dagshub.com/sivakumar026/dvcpipeline.mlflow" >> $GITHUB_ENV
           echo "MLFLOW_TRACKING_USERNAME=sivakumar026" >> $GITHUB_ENV
           echo "MLFLOW_TRACKING_PASSWORD=$DAGSHUB_TOKEN" >> $GITHUB_ENV
