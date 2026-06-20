@@ -5,6 +5,9 @@ stages:
     - data/external/loan_data.csv
     - params.yaml
     - src/data/data_collection.py
+    params:
+    - data_collection.test_size_param
+    - data_collection.random_state_param
     outs:
     - data/raw/test.csv
     - data/raw/train.csv

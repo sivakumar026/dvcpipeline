@@ -15,6 +15,10 @@ stages:
       hash: md5
       md5: 8e6ded7ff8fddee171128cdb7a7d4ab2
       size: 1873
+    params:
+      params.yaml:
+        data_collection.random_state_param: 42
+        data_collection.test_size_param: 0.3
     outs:
     - path: data/raw/test.csv
       hash: md5
@@ -57,8 +61,8 @@ stages:
       size: 11531
     - path: src/models/model_build.py
       hash: md5
-      md5: 83ec984d9a2c8890d940a53cc890c8ad
-      size: 2797
+      md5: 41ae5ab58cbec63c4074ac0a5f118af5
+      size: 3438
     outs:
     - path: models/model.pkl
       hash: md5
@@ -77,8 +81,8 @@ stages:
       size: 659129
     - path: src/models/model_eval.py
       hash: md5
-      md5: 6c20e5e6d57aa2ac2c77ca7467ff60b6
-      size: 896
+      md5: 569f69cbcd1042242e8eff02ab687d02
+      size: 1304
     outs:
     - path: reports/metrics.json
       hash: md5
