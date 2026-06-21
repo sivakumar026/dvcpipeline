@@ -61,7 +61,7 @@ dagshub.init(
 
 mlflow.set_experiment("Loan_Prediction")
 
-mlflow.autolog(disable=True)         # ✅
+mlflow.autolog(disable=True)
 mlflow.sklearn.autolog(disable=True)
 
 with mlflow.start_run() as run:
